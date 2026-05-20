@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortfolioHUB</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 0; }
+        header { background-color: #1e293b; color: white; padding: 2rem; text-align: center; }
+        h1 { margin: 0; font-size: 2.2rem; }
+        header p { color: #94a3b8; margin: 0.5rem 0 0 0; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
+        h2 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-top: 0; }
+        .project-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
+        @media(min-width: 600px) { .project-grid { grid-template-columns: 1fr 1fr; } }
+        .project-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.2rem; border-radius: 6px; display: flex; flex-direction: column; justify-content: space-between; }
+        .project-card h3 { color: #2563eb; margin: 0 0 0.5rem 0; }
+        .project-card p { color: #475569; font-size: 0.95rem; margin: 0 0 1rem 0; }
+        .project-link { color: #2563eb; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
+        .project-link:hover { text-decoration: underline; }
+        footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>PortfolioHUB</h1>
+        <p>Plataforma Centralizada de Projetos Digitais</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>Sobre o Projeto</h2>
+            <p>Este sistema web foi desenvolvido utilizando Python e Flask, integrado ao controle de versão do GitHub e orientado por diretrizes acadêmicas de segurança e gestão.</p>
+        </div>
+
+        <div class="card">
+            <h2>Meus Projetos (Integração GitHub API)</h2>
+            <div class="project-grid">
+                {% if projetos %}
+                    {% for projeto in projetos %}
+                        <div class="project-card">
+                            <div>
+                                <h3>{{ projeto.name }}</h3>
+                                <p>{{ projeto.description if projeto.description else 'Projeto sem descrição definida no GitHub.' }}</p>
+                            </div>
+                            <a href="{{ projeto.html_url }}" target="_blank" class="project-link">Ver no GitHub →</a>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>Nenhum repositório encontrado.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>PortfolioHUB &copy; 2026 - Desenvolvimento Seguro</p>
+    </footer>
+
+</body>
+</html>
