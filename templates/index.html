@@ -1,63 +1,109 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PortfolioHUB</title>
+    <title>Meu PortfolioHUB</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f9; color: #333; margin: 0; padding: 0; }
-        header { background-color: #1e293b; color: white; padding: 2rem; text-align: center; }
-        h1 { margin: 0; font-size: 2.2rem; }
-        header p { color: #94a3b8; margin: 0.5rem 0 0 0; }
-        .container { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
-        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 1.5rem; }
-        h2 { color: #0f172a; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; margin-top: 0; }
-        .project-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1rem; }
-        @media(min-width: 600px) { .project-grid { grid-template-columns: 1fr 1fr; } }
-        .project-card { background: #f8fafc; border: 1px solid #e2e8f0; padding: 1.2rem; border-radius: 6px; display: flex; flex-direction: column; justify-content: space-between; }
-        .project-card h3 { color: #2563eb; margin: 0 0 0.5rem 0; }
-        .project-card p { color: #475569; font-size: 0.95rem; margin: 0 0 1rem 0; }
-        .project-link { color: #2563eb; text-decoration: none; font-weight: bold; font-size: 0.9rem; }
-        .project-link:hover { text-decoration: underline; }
-        footer { text-align: center; padding: 2rem; color: #64748b; font-size: 0.9rem; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            width: 100%;
+            box-sizing: border-box;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            color: #e2e8f0;
+            font-size: 1.1rem;
+        }
+        .container {
+            max-width: 1000px;
+            width: 90%;
+            margin: 40px 0;
+        }
+        h2 {
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
+            color: #3b82f6;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #3b82f6;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #f1f5f9;
+        }
+        .card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #3b82f6;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .btn:hover {
+            background-color: #2563eb;
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>PortfolioHUB</h1>
-        <p>Plataforma Centralizada de Projetos Digitais</p>
+        <h1>Meu PortfolioHUB</h1>
+        <p>Desenvolvedor & Criador de Projetos</p>
     </header>
 
     <div class="container">
-        <div class="card">
-            <h2>Sobre o Projeto</h2>
-            <p>Este sistema web foi desenvolvido utilizando Python e Flask, integrado ao controle de versão do GitHub e orientado por diretrizes acadêmicas de segurança e gestão.</p>
-        </div>
+        <h2>🚀 Meus Projetos Principais</h2>
+        
+        <div class="grid">
+            <div class="card">
+                <h3>Projeto PortfolioHUB</h3>
+                <p>Plataforma centralizada para exibir e gerenciar portfólios digitais integrada ao GitHub.</p>
+                <a href="#" class="btn">Ver Projeto</a>
+            </div>
 
-        <div class="card">
-            <h2>Meus Projetos (Integração GitHub API)</h2>
-            <div class="project-grid">
-                {% if projetos %}
-                    {% for projeto in projetos %}
-                        <div class="project-card">
-                            <div>
-                                <h3>{{ projeto.name }}</h3>
-                                <p>{{ projeto.description if projeto.description else 'Projeto sem descrição definida no GitHub.' }}</p>
-                            </div>
-                            <a href="{{ projeto.html_url }}" target="_blank" class="project-link">Ver no GitHub →</a>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p>Nenhum repositório encontrado.</p>
-                {% endif %}
+            <div class="card">
+                <h3>Automação com IA</h3>
+                <p>Integração e suporte inteligente utilizando o Google GEMINI para guiar implantações de sistemas.</p>
+                <a href="#" class="btn">Ver Detalhes</a>
             </div>
         </div>
     </div>
-
-    <footer>
-        <p>PortfolioHUB &copy; 2026 - Desenvolvimento Seguro</p>
-    </footer>
 
 </body>
 </html>
